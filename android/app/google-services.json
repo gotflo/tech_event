@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452233556139",
+    "project_id": "teckevent",
+    "storage_bucket": "teckevent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452233556139:android:a733834f67ed73928ac7ee",
+        "android_client_info": {
+          "package_name": "com.tech.event"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452233556139-o1u6cbu774i0vp1ktjhoqaar3k3m6vo7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4jzL9TWBFDSIuFHMVJP6d3K8HByYnv60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452233556139-o1u6cbu774i0vp1ktjhoqaar3k3m6vo7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
