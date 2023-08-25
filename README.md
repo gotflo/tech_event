@@ -20,6 +20,10 @@ It's a mobile application developed using Flutter technology, directly interacti
 
     The Tech Event project is intentionally open source, thereby encouraging active community participation. Members can contribute by enhancing design, adding new features, and optimizing the user experience
 
+-  #### You can directly download the app release through this link and test it
+
+    - [Download Release](https://github.com/gotflo/tech_event/releases/download/tech_event/tech_event.apk)
+
 - #### Some screenshots
 
   ![Reference Image](/asset/images/first.png)
@@ -29,5 +33,3 @@ It's a mobile application developed using Flutter technology, directly interacti
   ![Reference Image](/asset/images/third.png)
 
 The open-sourcing of the project reflects the collaborative and competitive spirit that characterizes technology communities in Togo. By enabling everyone to get involved and enhance the application, Tech Event becomes not only a practical tool but also a catalyst for growth in the local tech scene.
-
-<!-- - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab) -->
