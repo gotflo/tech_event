@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:tech_event/constants/constants.dart';
+import 'package:tech_event/widgets/commons/rd_future_widget.dart';
 
 import 'drawer_widgets/nous_contacter.dart';
 
@@ -9,7 +11,7 @@ class DrawerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Constants constantsColor = Constants();
+    Constants constantsColor = const Constants();
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,14 +51,19 @@ class DrawerBody extends StatelessWidget {
                   ),
                 ),
                 const Gap(12),
-                Text(
-                  "V ${constantsColor.apkVersion}",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                RDFutureWidget(
+                  PackageInfo.fromPlatform().then(
+                    (info) => Text(
+                      "V ${info.version}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                )
+                  loader: const SizedBox.shrink(),
+                ),
               ],
             ),
           ),
@@ -91,7 +98,7 @@ class DrawerBody extends StatelessWidget {
                     ),
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: ((context) => const NousContacter()),
+                        builder: (context) => const NousContacter(),
                       ),
                     ),
                   ),
@@ -108,7 +115,19 @@ class DrawerBody extends StatelessWidget {
                       Icons.error,
                       color: constantsColor.primary,
                     ),
-                    onTap: () {},
+                    onTap: () => showLicensePage(
+                      context: context,
+                      applicationIcon: Image.asset(
+                        'asset/logo/tech_event_logo_complet.png',
+                        fit: BoxFit.cover,
+                        width: 45,
+                        height: 45,
+                        alignment: Alignment.center,
+                      ),
+                      applicationLegalese:
+                          "© ${DateTime.now().year} Tech Event",
+                      useRootNavigator: false,
+                    ),
                   ),
                   const Gap(2),
                   Divider(

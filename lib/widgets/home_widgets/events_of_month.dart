@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_event/providers/top_event_provider.dart';
+import 'package:tech_event/screens/event_detail/future_event_detail_screen.dart';
 
 class TopEventOfMonth extends StatelessWidget {
   const TopEventOfMonth({super.key});
@@ -17,37 +18,26 @@ class TopEventOfMonth extends StatelessWidget {
         // }
         return Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              // onTap: () => Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: ((context) => FutureEventDetailScreen(
-              //           headerImageUrl: eventProvider.events[index].imageUrl,
-              //           eventId: eventProvider.events[index].imageUID,
-              //         )),
-              //   ),
-              // ),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: CachedNetworkImage(
-                    imageUrl: eventProvider.events[index].imageUrl,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Center(
-                      child: Container(
-                        height: 400,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFE9E9E9),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        width: MediaQuery.of(context).size.width,
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: CachedNetworkImage(
+                  imageUrl: eventProvider.events[index].imageUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Center(
+                    child: Container(
+                      height: 400,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE9E9E9),
+                        borderRadius: BorderRadius.circular(20),
                       ),
+                      width: MediaQuery.of(context).size.width,
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             );
@@ -56,11 +46,20 @@ class TopEventOfMonth extends StatelessWidget {
           itemHeight: 400,
           itemCount: eventProvider.events.length,
           layout: SwiperLayout.TINDER,
-          scrollDirection: Axis.vertical,
+          scrollDirection: Axis.horizontal,
           autoplay: true,
           autoplayDelay: 3000,
           autoplayDisableOnInteraction: true,
-          // control:SwiperControl(),
+          axisDirection: AxisDirection.right,
+          allowImplicitScrolling: true,
+          onTap: (index) => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => FutureEventDetailScreen(
+                headerImageUrl: eventProvider.events[index].imageUrl,
+                eventId: eventProvider.events[index].imageUID,
+              ),
+            ),
+          ),
         );
       },
     );
