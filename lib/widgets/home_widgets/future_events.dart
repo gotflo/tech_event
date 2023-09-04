@@ -19,6 +19,7 @@ class FutureEvents extends StatelessWidget {
           .where('date',
               isGreaterThanOrEqualTo:
                   Timestamp.now()) // Filtrer par date future
+          .orderBy('date', descending: true) //Sort events by date desc
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

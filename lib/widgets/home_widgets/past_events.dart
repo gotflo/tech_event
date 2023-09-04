@@ -18,8 +18,8 @@ class PastEvents extends StatelessWidget {
         stream: FirebaseFirestore.instance
             .collection('events')
             // .where('status', isEqualTo: false) // Filtrer par statut "false"
-            .where('date',
-                isLessThanOrEqualTo: Timestamp.now()) // Filtrer par date future
+            .where('date', isLessThanOrEqualTo: Timestamp.now())
+            .orderBy('date', descending: true) //Sort events by date desc
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
